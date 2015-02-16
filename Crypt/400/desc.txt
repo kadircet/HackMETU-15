@@ -1,0 +1,16 @@
+$res="";
+$res.="I've found an admin panel to my victim but panel checks for authentication\n";
+$res.="I was wondering if u can pass the auth for me bro\n";
+$res.="The panel is at:";
+
+$IP="";
+$sql = "SELECT `IP` FROM `crypt400`";
+$stmt = $db->prepare($sql);
+$stmt->bind_result($IP);
+$stmt->execute();
+$stmt->store_result();
+$stmt->fetch();
+$stmt->close();
+$res.=$IP.":".(1100+$team->id-1);
+
+return $res;

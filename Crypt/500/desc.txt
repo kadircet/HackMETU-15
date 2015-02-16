@@ -1,0 +1,38 @@
+$res="HI! I've found some encrypted message but I couldn't manage to break it\n";
+$res.="And while looking for a way in I've found how they encrypted messages\n";
+$res.="They were using python can u decrypt the following message encrypted by\n";
+$res.="the code piece I've found??\n\n";
+
+$res.="The code piece:\n";
+$res.="#n=25060027\n";
+$res.="#e=499\n";
+$res.="def encrypt(M):\n";
+$res.="\tres=[]\n";
+$res.="\tfor i in range(0,len(M),3):\n";
+$res.="\t\tmsg = M[i:i+3]\n";
+$res.="\t\tc=0\n";
+$res.="\t\tfor m in msg:\n";
+$res.="\t\t\tc*=128\n";
+$res.="\t\t\tc+=ord(m)\n";
+$res.="\t\tc = pow(c,e,n)\n";
+$res.="\t\tres.append(c)\n";
+$res.="\treturn res\n\n";
+		
+$res.='M = "60b725f10c9c85c70d97880dfe8191b3"\n';
+$res.="r=encrypt(M)#[3724340, 16136729, 14683120, 22615284, 17576919, 21433720, 9003667, 12651139, 2879248, 2971094, 13161753]\n";
+$res.="print decrypt(r)#60b725f10c9c85c70d97880dfe8191b3\n\n";
+
+$res.="The encrypted message I need u to decrypt is:\n";
+
+$msg = "";
+$sql = "SELECT `msg` FROM `crypt500` WHERE `teamID`=?";
+$stmt = $db->prepare($sql);
+$stmt->bind_param("i", $team->id);
+$stmt->bind_result($msg);
+$stmt->execute();
+$stmt->store_result();
+$stmt->fetch();
+$stmt->close();
+$res.=$msg."\n";
+
+return $res;

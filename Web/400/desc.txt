@@ -1,0 +1,17 @@
+$res="Can u login as an admin??\n\n";
+
+$file="";
+$sql = "SELECT `file` FROM `web400` WHERE `teamID`=?";
+$stmt = $db->prepare($sql);
+$stmt->bind_param("i", $team->id);
+$stmt->bind_result($file);
+$stmt->execute();
+$stmt->store_result();
+$stmt->fetch();
+$stmt->close();
+
+$res.="Btw, i figured out that the db name is users, table name is user and each user has 3 cols uname, pass, flag\n";
+$res.="Dunno if it helps.\n\n";
+
+$res.="<a href='$file'>$file</a>";
+return $res;

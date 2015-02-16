@@ -1,0 +1,18 @@
+$res="";
+
+$ip="";
+$file="";
+$sql = "SELECT `ip`,`file`,`pass` FROM `pwn300` WHERE `teamID`=?";
+$stmt = $db->prepare($sql);
+$stmt->bind_param("i", $team->id);
+$stmt->bind_result($ip, $file, $pass);
+$stmt->execute();
+$stmt->store_result();
+$stmt->fetch();
+$stmt->close();
+$res.="\t\tTo connect u may use: ssh $ip -lp3001t".($team->id-1)."\n With password: $pass\n\n";
+
+$res.="Here you can download the executable:\n";
+$res.="<a href='$file'>$file</a>\n";
+
+return $res;

@@ -1,0 +1,20 @@
+$res="Crack Me First\n\n";
+
+$res.="Hi guys, i found an office program that helps me write my documents and then\n";
+$res.="print them. The problem is it is not a free program and its licence fee is too\n";
+$res.="damn high. I am looking for help on cracking that licence could anyone help me?\n\n";
+
+$res.="You can find the program here:\n";
+
+$file="";
+$sql = "SELECT `file` FROM `rev100` WHERE `teamID`=?";
+$stmt = $db->prepare($sql);
+$stmt->bind_param("i", $team->id);
+$stmt->bind_result($file);
+$stmt->execute();
+$stmt->store_result();
+$stmt->fetch();
+$stmt->close();
+
+$res.="<a href='$file'>$file</a>\n";
+return $res;

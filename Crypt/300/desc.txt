@@ -1,0 +1,17 @@
+$res="";
+$res.="You've intercepted some one time padded messages, good thing is they are all\npadded with the same key ^^. And you know that the plain text messages are\nenglish ascii coded texts and we need you to decrypt the following message:\n";
+
+$target="";
+$sql = "SELECT `target` FROM `crypt300` WHERE `teamID`=?";
+$stmt = $db->prepare($sql);
+$stmt->bind_param("i", $team->id);
+$stmt->bind_result($target);
+$stmt->execute();
+$stmt->store_result();
+$stmt->fetch();
+$stmt->close();
+
+$res.="The ciphertexts you have found are(they are all hex encoded just as the target message):\n";
+$res.=$target."\n\n";
+
+return $res;

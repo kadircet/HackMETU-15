@@ -1,0 +1,15 @@
+$res="Can u login as an admin??\n\n";
+
+$file="";
+$sql = "SELECT `file` FROM `web500` WHERE `teamID`=?";
+$stmt = $db->prepare($sql);
+$stmt->bind_param("i", $team->id);
+$stmt->bind_result($file);
+$stmt->execute();
+$stmt->store_result();
+$stmt->fetch();
+$stmt->close();
+
+$res.="Btw, i found a backup at http://file.0xdeffbeef.com/web500.tar.gz<br/>\n";
+$res.="<a href='$file'>$file</a>";
+return $res;

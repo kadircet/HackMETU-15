@@ -1,0 +1,48 @@
+$IP="http://192.168.2.5";
+$res="Can u get my access back?\n\n";
+
+$res.="Duuude, a hacker called omega took over my account at logintogethacked :(.\n";
+$res.="I have tried to take it back for a while but i could not succeed cause he even\n";
+$res.="managed to change my username and i cannot find what it is :/\n\n";
+
+$res.="And i heard that you got some neck about those \"HACKING\" things could u help me?\n";
+$res.="if u can log in to my account please send my info to me ^^\n\n";
+
+$file="";
+$sql = "SELECT `file` FROM `web100` WHERE `teamID`=?";
+$stmt = $db->prepare($sql);
+$stmt->bind_param("i", $team->id);
+$stmt->bind_result($file);
+$stmt->execute();
+$stmt->store_result();
+$stmt->fetch();
+$stmt->close();
+
+$file = $IP."/web100/team".($team->id-1).$file;
+$res.="<a href='$file'>$file</a>";
+return $res;
+
+
+$IP="http://192.168.2.5";
+$res="Can u get my access back?\n\n";
+
+$res.="Dostum, omega adinda bir hacker logintogethacked sitesindeki hesabimi hackledi :(.\n";
+$res.="Geri almak icin cok ugrastim ama basaramadm cunku adam kullanici adimi bile degistirmis\n";
+$res.="ve ben ne oldugunu bile bulamiyorum :/\n\n";
+
+$res.="Senin bu \"HACKING\" islerine dair yetenegin oldugunu duydum. Acaba bana yardim eder misin?\n";
+$res.="Eger hesabima giris yapabilirsen lutfen bilgileri bana gonder ^^\n\n";
+
+$file="";
+$sql = "SELECT `file` FROM `web100` WHERE `teamID`=?";
+$stmt = $db->prepare($sql);
+$stmt->bind_param("i", $team->id);
+$stmt->bind_result($file);
+$stmt->execute();
+$stmt->store_result();
+$stmt->fetch();
+$stmt->close();
+
+$file = $IP."/web100/team".($team->id-1).$file;
+$res.="<a href='$file'>$file</a>";
+return $res;

@@ -1,0 +1,17 @@
+$res="";
+
+$ip="";
+$file="";
+$sql = "SELECT `ip`,`file` FROM `pwn500`";
+$stmt = $db->prepare($sql);
+$stmt->bind_result($ip, $file);
+$stmt->execute();
+$stmt->store_result();
+$stmt->fetch();
+$stmt->close();
+$res.="\t\tTo connect u may use: nc $ip ".(1500+$team->id-1)."\n\n";
+
+$res.="Here you can download the executable:\n";
+$res.="<a href='$file'>$file</a>\n";
+
+return $res;

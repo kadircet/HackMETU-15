@@ -1,0 +1,14 @@
+$res="Can u login as an admin??\n\n";
+
+$file="";
+$sql = "SELECT `file` FROM `web200` WHERE `teamID`=?";
+$stmt = $db->prepare($sql);
+$stmt->bind_param("i", $team->id);
+$stmt->bind_result($file);
+$stmt->execute();
+$stmt->store_result();
+$stmt->fetch();
+$stmt->close();
+
+$res.="<a href='$file'>$file</a>";
+return $res;

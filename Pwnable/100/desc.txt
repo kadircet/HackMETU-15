@@ -1,0 +1,25 @@
+$res="Let me Pass\n\n";
+
+$res.="Hi bro, i managed to get into a military server and found a password protected\n";
+$res.="file the thing is i could not manage to crack it and i am too damn curious to\n";
+$res.="learn what is in it could you lend me a hand?? if you choose to help me:\n\n";
+
+$res.="The file protector is listening on the server i mentioned below and waiting for the\n";
+$res.="legitimate password to reveal the file. Dont forget to send me the file after\n";
+$res.="you get it :)\n\n";
+
+$ip="";
+$file="";
+$sql = "SELECT `ip`,`file` FROM `pwn100`";
+$stmt = $db->prepare($sql);
+$stmt->bind_result($ip, $file);
+$stmt->execute();
+$stmt->store_result();
+$stmt->fetch();
+$stmt->close();
+$res.="\t\tTo connect u may use: nc $ip ".(1200+$team->id-1)."\n\n";
+
+$res.="Here you can download the executable that protects the file:\n";
+$res.="<a href='$file'>$file</a>\n";
+
+return $res;

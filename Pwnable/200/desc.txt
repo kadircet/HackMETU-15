@@ -1,0 +1,21 @@
+$res="Secret Function\n\n";
+
+$res.="Hi dude I've found an executable that seems to be vulnerable, i was wondering\n";
+$res.="if you can find a way to exploit the file and get your hands on some file on the server\n";
+$res.="If you manage to get your hands on please dont forget to send me the file.\n\n";
+
+$ip="";
+$file="";
+$sql = "SELECT `ip`,`file` FROM `pwn200`";
+$stmt = $db->prepare($sql);
+$stmt->bind_result($ip, $file);
+$stmt->execute();
+$stmt->store_result();
+$stmt->fetch();
+$stmt->close();
+$res.="\t\tTo connect u may use: nc $ip ".(1300+$team->id-1)."\n\n";
+
+$res.="Here you can download the executable:\n";
+$res.="<a href='$file'>$file</a>\n";
+
+return $res;
